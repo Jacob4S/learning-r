@@ -26,3 +26,64 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+``` {r}
+
+library(tidyverse)
+library(socviz)
+
+```
+Alt-dash creates <-
+
+class() gives you the class of an object.
+
+as_tibble(df) converts to a tibble.
+
+str() DOES NOT convert to a string. It shows what an object contains.
+
+
+```{r plot, echo=TRUE}
+library(gapminder)
+p <- ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp))
+p + geom_point() + geom_smooth()
+
+```
+
+aes stands for aesthetic mappings.
+Plot is called a geom in ggplot.
+
+geom_point: scatterplots
+geom_bar: barplots
+geom_boxplot: boxplots
+
+``` {r}
+library(gapminder)
+p <- ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp))
+p + geom_point(color='yellow') + geom_smooth(method=lm) + scale_x_log10()
+
+```
+alpha = transparency
+size = size
+shape = shape
+method -for fitting lines
+
+```{r labels}
+
+p <- ggplot(data=gapminder, mapping=aes(x=gdpPercap, y=lifeExp))
+p + geom_point(alpha=0.3) +
+  geom_smooth(method="gam") + 
+  scale_x_log10(labels= scales::dollar) +
+  labs(x = "GDP per Capita", y = "life expectancy in years", 
+       title = "Growth and Life Expectancy", 
+       subtitle= "Data points are country-years",
+       caption = "Source: Gapminder")
+
+
+```
+
+Practice reading and examining the Kaggle data.
+
+
+
+
+
